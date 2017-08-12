@@ -52,5 +52,6 @@ def FindMinimumSpanningTree(adjacent):
             continue
         Union(nodes, a, b)
         result[a][b] = curr.weight
+        result[b][a] = curr.weight
 
     return result
