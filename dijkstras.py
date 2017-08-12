@@ -4,13 +4,15 @@ from collections import namedtuple, defaultdict
 Node = namedtuple('Node', ['depth', 'index'])
 disjoint = float('inf')
 
+
 def AddAdjacent(heap, adjacency, node):
     row = node.index
     for col in xrange(len(adjacency[row])):
         if adjacency[row][col] == disjoint:
             continue
-        depth = node.depth + adjacency
+        depth = node.depth + adjacency[row][col]
         heapq.heappush(heap, Node(depth=depth, index=col))
+
 
 def FindShortestDistanceBetween(adjacency, a, b):
     visited = defaultdict(lambda: False)
